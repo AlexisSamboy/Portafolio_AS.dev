@@ -21,11 +21,11 @@ const MinimalistHeroDemo = () => {
   return (
     <MinimalistHero
       logoText="ALEXIS S."
-      logoImgSrc="/img/logo-as-dev.png"
+      logoImgSrc="img/logo-as-dev.png"
       navLinks={navLinks}
       mainText="Especialista en Business Intelligence & Estrategia Digital. Diseño modelos de datos, automatizo ETLs y construyo cuadros de mando interactivos para facilitar decisiones de negocio estratégicas."
       readMoreLink="#about"
-      imageSrc="/img/alexis-sin-fondo.png"
+      imageSrc="img/alexis-sin-fondo.png"
       imageAlt="Alexis Samboy Herrera - Business Intelligence Specialist"
       overlayText={{
         part1: 'BUSINESS',

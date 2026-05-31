@@ -13,7 +13,7 @@ const items = [
   {
     id: "01",
     title: "Power BI & BI Core",
-    img: "/img/certs/certificado-power-bi.png",
+    img: "img/certs/certificado-power-bi.png",
     content: "Especialización en análisis de datos corporativos, modelado DAX y estructuración de cuadros de mando interactivos en Power BI para el monitoreo de KPIs de negocio.",
     certs: [
       { name: "Microsoft Power BI", issuer: "Escuela de informática UASD", year: "2024" },
@@ -24,7 +24,7 @@ const items = [
   {
     id: "02",
     title: "Ciencia de Datos & ETL con Python",
-    img: "/img/certs/ciencias-de-datos.png",
+    img: "img/certs/ciencias-de-datos.png",
     content: "Fundamentos estadísticos, minería de datos y construcción de tuberías de extracción, transformación y carga (ETL) automatizadas para analítica avanzada.",
     certs: [
       { name: "Desarrollo de procesos ETL con Python y pandas", issuer: "Plataforma UBITS", year: "2024" },
@@ -35,7 +35,7 @@ const items = [
   {
     id: "03",
     title: "Programación en Python",
-    img: "/img/certs/certificacion-python-itla.jpg",
+    img: "img/certs/certificacion-python-itla.jpg",
     content: "Dominio práctico del lenguaje de programación estándar para análisis de datos, incluyendo la automatización de procesos y la resolución de problemas lógicos.",
     certs: [
       { name: "Programación en Python", issuer: "Instituto Tecnológico de las Américas (ITLA)", year: "2024" },
@@ -46,7 +46,7 @@ const items = [
   {
     id: "04",
     title: "Hojas de Cálculo & Excel Avanzado",
-    img: "/img/certs/certificacion-excel-avanzado.jpg",
+    img: "img/certs/certificacion-excel-avanzado.jpg",
     content: "Automatización avanzada de reportes ejecutivos mediante el uso de macros, tablas dinámicas complejas y fórmulas lógicas financieras avanzadas.",
     certs: [
       { name: "Curso de Excel Avanzado", issuer: "Instituto Tecnológico de las Américas (ITLA)", year: "2025" },
@@ -58,7 +58,7 @@ const items = [
   {
     id: "05",
     title: "Liderazgo, Soporte Técnico & Redes",
-    img: "/img/certs/certificacion-liderazgo.png",
+    img: "img/certs/certificacion-liderazgo.png",
     content: "Capacidades de liderazgo de equipos en entornos digitales, además de habilidades de soporte técnico informático, infraestructura física y redes LAN/WAN.",
     certs: [
       { name: "Curso de Liderazgo de Equipos", issuer: "Cymetria - Indotel (Talento Digital)", year: "2025" },

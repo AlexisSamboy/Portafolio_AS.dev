@@ -12,7 +12,7 @@ interface VideoScrollHeroProps {
 }
 
 export function VideoScrollHero({
-  videoSrc = "/video/cyberpunk.mp4",
+  videoSrc = "video/cyberpunk.mp4",
   enableAnimations = true,
   className = "",
   startScale = 0.25,

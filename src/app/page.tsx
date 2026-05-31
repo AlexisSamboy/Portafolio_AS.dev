@@ -210,25 +210,25 @@ ORDER BY v.total_monto DESC;`;
                     {/* Layer 1: Torso/Shoulders clipped inside the circular border */}
                     <div className="absolute inset-0 rounded-full overflow-hidden">
                       <img 
-                        src="/img/alexis-sin-fondo.png" 
+                        src="img/alexis-sin-fondo.png" 
                         alt="Alexis Samboy Avatar Body" 
                         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[125%] h-[125%] object-cover origin-bottom"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
-                          target.src = "/img/alexis-samboy.jpg";
+                          target.src = "img/alexis-samboy.jpg";
                         }}
                       />
                     </div>
                     
                     {/* Layer 2: Head protruding OUTSIDE the circular border (on top) */}
                     <img 
-                      src="/img/alexis-sin-fondo.png" 
+                      src="img/alexis-sin-fondo.png" 
                       alt="Alexis Samboy Avatar Head" 
                       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[125%] h-[125%] object-cover origin-bottom pointer-events-none"
                       style={{ clipPath: 'polygon(0 0, 100% 0, 100% 55%, 0 55%)' }}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        target.src = "/img/alexis-samboy.jpg";
+                        target.src = "img/alexis-samboy.jpg";
                       }}
                     />
                   </motion.div>

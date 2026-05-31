@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   keywords: ["Data Analyst", "Analista de Datos", "Alexis Samboy", "Power BI", "SQL", "Python", "Dashboard", "Dominican Republic"],
   authors: [{ name: "Alexis Samboy" }],
   icons: {
-    icon: "/img/logo-nav.png",
+    icon: "img/logo-nav.png",
   },
 };
 
