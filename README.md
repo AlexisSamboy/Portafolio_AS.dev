@@ -1,7 +1,6 @@
 # 🌐 Alexis Samboy — Portafolio Profesional Cyberpunk
 
 Este es el portafolio profesional e interactivo de **Alexis Samboy**, Especialista en Business Intelligence & Estrategia Digital. La aplicación está diseñada con una estética futurista, cyberpunk y de ciencia ficción, presentando animaciones fluidas, visualizaciones holográficas de datos y una experiencia de usuario premium en modo oscuro.
-
 ---
 
 ## 🔗 Ver en Vivo
