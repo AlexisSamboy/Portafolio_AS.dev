@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { LucideIcon } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn, getAssetPath } from '@/lib/utils';
 
 import { HologramLoop } from './hologram-loop';
 
@@ -80,7 +80,7 @@ export const MinimalistHero = ({
           className="text-xl font-bold tracking-wider text-glow-cyan text-[#00f0ff] flex items-center"
         >
           {logoImgSrc ? (
-            <img src={logoImgSrc} alt="AS.DEV Logo" className="h-6 w-auto object-contain md:h-7" />
+            <img src={getAssetPath(logoImgSrc)} alt="AS.DEV Logo" className="h-6 w-auto object-contain md:h-7" />
           ) : (
             logoText
           )}
@@ -133,7 +133,7 @@ export const MinimalistHero = ({
                 className="absolute z-0 h-[300px] w-[300px] rounded-full bg-gradient-to-tr from-fuchsia-500 via-purple-600 to-cyan-400 opacity-60 blur-2xl animate-pulse md:h-[400px] md:w-[400px] lg:h-[500px] lg:w-[500px]"
             ></motion.div>
             <motion.img
-                src={imageSrc}
+                src={getAssetPath(imageSrc)}
                 alt={imageAlt}
                 className="relative z-10 h-auto w-56 object-cover md:w-64 scale-150 lg:w-72"
                 initial={{ opacity: 0, y: 50 }}

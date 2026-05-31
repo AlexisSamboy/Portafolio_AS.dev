@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 
+import { getAssetPath } from "@/lib/utils"
+
 const items = [
   {
     id: "01",
@@ -129,7 +131,7 @@ export function Accordion03() {
               <div className="relative min-h-[200px] md:min-h-full border-t md:border-t-0 md:border-l border-[#00f0ff]/10 overflow-hidden group/img">
                 <img
                   className="w-full h-full object-cover transition-transform duration-700 group-hover/img:scale-105"
-                  src={item.img}
+                  src={getAssetPath(item.img)}
                   alt={item.title}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />

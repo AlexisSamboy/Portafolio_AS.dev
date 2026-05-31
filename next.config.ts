@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // Note: If you deploy to a repository subdirectory (e.g. username.github.io/repo-name),
-  // Next.js will automatically inherit the basePath if you use GitHub Actions with actions/configure-pages.
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || "",
 };
 
 export default nextConfig;

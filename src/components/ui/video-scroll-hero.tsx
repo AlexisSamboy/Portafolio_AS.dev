@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { getAssetPath } from "@/lib/utils";
 
 interface VideoScrollHeroProps {
   videoSrc?: string;
@@ -87,7 +88,7 @@ export function VideoScrollHero({
               playsInline
               className="absolute inset-0 w-full h-full object-cover opacity-25 z-0 pointer-events-none"
             >
-              <source src={videoSrc} type="video/mp4" />
+              <source src={getAssetPath(videoSrc)} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
 

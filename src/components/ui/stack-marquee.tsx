@@ -1,4 +1,5 @@
 import React from 'react';
+import { getAssetPath } from '@/lib/utils';
 
 const tools = [
   { name: 'Power BI', src: '/img/tools/power-bi.png' },
@@ -35,7 +36,7 @@ export const StackMarquee = () => {
             className="flex items-center space-x-3 rounded-full border border-cyan-500/15 bg-slate-950/60 px-5 py-3 text-sm text-cyan-200/80 shadow-[0_0_15px_rgba(0,240,255,0.02)] transition-all duration-300 hover:border-cyan-400 hover:text-cyan-100 hover:shadow-[0_0_20px_rgba(0,240,255,0.15)] hover:-translate-y-0.5"
           >
             <img
-              src={tool.src}
+              src={getAssetPath(tool.src)}
               alt={tool.name}
               className="h-7 w-7 object-contain drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]"
               onError={(e) => {

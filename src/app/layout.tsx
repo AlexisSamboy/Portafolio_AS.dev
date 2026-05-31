@@ -12,13 +12,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export const metadata: Metadata = {
   title: "Alexis Samboy | Data Analyst & Estratega Digital",
   description: "Portafolio profesional de Alexis Samboy. Especializado en transformar datos complejos en soluciones de negocio claras con Power BI, Python, SQL y Excel.",
   keywords: ["Data Analyst", "Analista de Datos", "Alexis Samboy", "Power BI", "SQL", "Python", "Dashboard", "Dominican Republic"],
   authors: [{ name: "Alexis Samboy" }],
   icons: {
-    icon: "img/logo-nav.png",
+    icon: basePath ? `${basePath}/img/logo-nav.png` : "img/logo-nav.png",
   },
 };
 

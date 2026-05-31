@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect, useLayoutEffect, useCallback, forwardRef } from "react"
 import { X, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { cn, getAssetPath } from "@/lib/utils"
 
 interface Project {
   id: string
@@ -494,7 +494,7 @@ export function ImageLightbox({
               {projects.map((project) => (
                 <img
                   key={project.id}
-                  src={project.image || "/placeholder.svg"}
+                  src={getAssetPath(project.image || "/placeholder.svg")}
                   alt={project.title}
                   className="w-full h-auto max-h-[60vh] object-contain bg-[#05060a] flex-shrink-0"
                   style={{ minWidth: "100%" }}
@@ -627,7 +627,7 @@ export const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
           onClick()
         }}
       >
-        <img src={image || "/placeholder.svg"} alt={title} className="w-full h-full object-cover" />
+        <img src={getAssetPath(image || "/placeholder.svg")} alt={title} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#05060a]/70 to-transparent" />
         <p className="absolute bottom-1.5 left-1.5 right-1.5 text-[9px] font-medium text-slate-200 truncate">
           {title}
