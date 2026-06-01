@@ -80,7 +80,7 @@ export default function RuixenCard4() {
       const info = getAriaResponse(lastUserText);
       text = info.waText;
     }
-    return `https://wa.me/18298642398?text=${encodeURIComponent(text)}`;
+    return `https://wa.me/18098903807?text=${encodeURIComponent(text)}`;
   };
 
   return (

@@ -194,3 +194,69 @@
   opacity: 0.4;
   pointer-events: none;
 }
+
+/* --- GEOMETRIC SPHERE ANIMATIONS --- */
+:root {
+  --sphere-primary: 255, 43, 106; /* Magenta */
+  --sphere-secondary: 0, 240, 255; /* Cyan */
+  --sphere-rotation-duration: 200s;
+  --grid-pan-duration: 120s;
+  --core-glow-duration: 15s;
+  --wire-opacity: 0.6;
+  --wire-shadow: 50px;
+  --core-blur: 150px;
+}
+
+@keyframes sphereRotate {
+  from {
+    transform: rotateY(0deg) rotateX(0deg);
+  }
+  to {
+    transform: rotateY(360deg) rotateX(360deg);
+  }
+}
+
+@keyframes gridPan {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes coreGlow {
+  0%, 100% {
+    transform: scale(1.0) translate(-50%, -50%);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.05) translate(-50%, -50%);
+    opacity: 1;
+  }
+}
+
+.sphere-rotation {
+  animation: sphereRotate var(--sphere-rotation-duration) linear infinite;
+  transform-style: preserve-3d;
+}
+
+.wireframe-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(var(--sphere-primary), var(--wire-opacity));
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  box-shadow: 0 0 var(--wire-shadow) rgba(var(--sphere-primary), 0.12);
+}
+
+.panning-grid {
+  animation: gridPan var(--grid-pan-duration) linear infinite;
+}
+
+.core-light {
+  animation: coreGlow var(--core-glow-duration) ease-in-out infinite;
+}
