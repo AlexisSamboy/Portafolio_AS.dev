@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Navbar } from "@/components/ui/navbar";
+import { CinematicFooter } from "@/components/ui/motion-footer";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-sans",
@@ -31,9 +33,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${spaceGrotesk.variable} ${geistMono.variable}`}>
-      <body className="antialiased min-h-screen relative text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-200">
+      <body className="antialiased min-h-screen relative text-slate-100 selection:bg-cyan-500/30 selection:text-cyan-200 bg-[#05060a]">
+        {/* Global Navbar */}
+        <Navbar />
+        
         {/* Page Content */}
         {children}
+
+        {/* Global Cinematic Footer */}
+        <CinematicFooter />
       </body>
     </html>
   );

@@ -1,17 +1,10 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { LucideIcon, X } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { cn, getAssetPath } from '@/lib/utils';
-
 import { HologramLoop } from './hologram-loop';
 
-// Define the props interface for type safety and reusability
 interface MinimalistHeroProps {
-  logoText?: string;
-  logoImgSrc?: string;
-  navLinks: { label: string; href: string }[];
   mainText: string;
-  readMoreLink: string;
   imageSrc: string;
   imageAlt: string;
   overlayText: {
@@ -23,17 +16,6 @@ interface MinimalistHeroProps {
   className?: string;
 }
 
-// Helper component for navigation links
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <a
-    href={href}
-    className="text-sm font-medium tracking-widest text-[#00f0ff]/60 transition-colors hover:text-[#00f0ff] text-glow-cyan"
-  >
-    {children}
-  </a>
-);
-
-// Helper component for social media icons
 const SocialIcon = ({ href, icon: Icon }: { href: string; icon: React.ComponentType<{ className?: string }> }) => (
   <motion.a 
     href={href} 
@@ -50,13 +32,8 @@ const SocialIcon = ({ href, icon: Icon }: { href: string; icon: React.ComponentT
   </motion.a>
 );
 
-// The main reusable Hero Section component
 export const MinimalistHero = ({
-  logoText,
-  logoImgSrc,
-  navLinks,
   mainText,
-  readMoreLink,
   imageSrc,
   imageAlt,
   overlayText,
@@ -64,8 +41,6 @@ export const MinimalistHero = ({
   locationText,
   className,
 }: MinimalistHeroProps) => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   return (
     <div
       className={cn(
@@ -73,40 +48,8 @@ export const MinimalistHero = ({
         className
       )}
     >
-      {/* Header */}
-      <header className="z-30 flex w-full max-w-7xl items-center justify-between">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-xl font-bold tracking-wider text-glow-cyan text-[#00f0ff] flex items-center"
-        >
-          {logoImgSrc ? (
-            <img src={getAssetPath(logoImgSrc)} alt="AS.DEV Logo" className="h-6 w-auto object-contain md:h-7" />
-          ) : (
-            logoText
-          )}
-        </motion.div>
-        <div className="hidden items-center space-x-8 md:flex">
-          {navLinks.map((link) => (
-            <NavLink key={link.label} href={link.href}>
-              {link.label}
-            </NavLink>
-          ))}
-        </div>
-        <motion.button
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col space-y-1.5 md:hidden z-40 p-2 cursor-pointer hover:opacity-80 transition-opacity"
-          onClick={() => setIsMobileMenuOpen(true)}
-          aria-label="Open menu"
-        >
-          <span className="block h-0.5 w-6 bg-foreground"></span>
-          <span className="block h-0.5 w-6 bg-foreground"></span>
-          <span className="block h-0.5 w-5 bg-foreground"></span>
-        </motion.button>
-      </header>
+      {/* Header Spacer (since navbar is absolute at top) */}
+      <div className="h-16 w-full" />
 
       {/* Main Content Area */}
       <div className="relative grid w-full max-w-7xl flex-grow grid-cols-1 items-center md:grid-cols-3">
@@ -114,7 +57,7 @@ export const MinimalistHero = ({
         <motion.div
           initial={{ opacity: 0, x: -35 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ type: "spring", stiffness: 80, damping: 15, delay: 1 }}
+          transition={{ type: "spring", stiffness: 80, damping: 15, delay: 0.5 }}
           className="z-20 order-2 md:order-1 text-center md:text-left"
         >
           <motion.p 
@@ -141,7 +84,7 @@ export const MinimalistHero = ({
                 className="relative z-10 h-auto w-56 object-cover md:w-64 scale-150 lg:w-72"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
                 onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.onerror = null;
@@ -154,12 +97,12 @@ export const MinimalistHero = ({
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           className="z-20 order-3 flex items-center justify-center text-center md:justify-start"
         >
           <h1 className="text-4xl sm:text-5xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-slate-100 font-mono tracking-tighter select-none">
             <span className="text-glow-cyan animate-pulse-cyan block">{overlayText.part1}</span>
-            <span className="text-[#ff2b6a] text-glow-magenta animate-pulse-magenta block">{overlayText.part2}</span>
+            <span className="text-[#ff2b6a] text-[#ff2b6a]/90 text-glow-magenta animate-pulse-magenta block">{overlayText.part2}</span>
           </h1>
         </motion.div>
       </div>
@@ -169,7 +112,7 @@ export const MinimalistHero = ({
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
           className="flex items-center space-x-4"
         >
           {socialLinks.map((link, index) => (
@@ -183,12 +126,12 @@ export const MinimalistHero = ({
             y: [0, -3, 0]
           }}
           transition={{ 
-            opacity: { duration: 0.5, delay: 1.3 },
+            opacity: { duration: 0.5, delay: 0.9 },
             y: {
               repeat: Infinity,
               duration: 4,
               ease: "easeInOut",
-              delay: 1.8
+              delay: 1.2
             }
           }}
           className="text-sm font-medium text-slate-300 flex items-center select-none"
@@ -200,77 +143,6 @@ export const MinimalistHero = ({
           {locationText}
         </motion.div>
       </footer>
-
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed inset-0 z-50 flex flex-col justify-between bg-[#05060a]/98 backdrop-blur-2xl p-8 md:hidden border-b border-[#00f0ff]/20"
-          >
-            {/* Header inside Mobile Menu */}
-            <div className="flex w-full items-center justify-between">
-              <div className="text-xl font-bold tracking-wider text-glow-cyan text-[#00f0ff] flex items-center">
-                {logoImgSrc ? (
-                  <img src={getAssetPath(logoImgSrc)} alt="AS.DEV Logo" className="h-6 w-auto object-contain" />
-                ) : (
-                  logoText
-                )}
-              </div>
-              <button
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="p-2 text-slate-300 hover:text-[#ff2b6a] hover:scale-110 transition-all cursor-pointer"
-                aria-label="Close menu"
-              >
-                <X className="h-6 w-6" />
-              </button>
-            </div>
-
-            {/* Links Content */}
-            <div className="flex flex-col items-center justify-center space-y-8 my-auto">
-              {navLinks.map((link, index) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-2xl font-semibold tracking-widest text-[#00f0ff]/80 hover:text-[#00f0ff] text-glow-cyan transition-colors"
-                >
-                  {link.label}
-                </motion.a>
-              ))}
-            </div>
-
-            {/* Mobile Menu Footer */}
-            <div className="flex flex-col items-center space-y-4 border-t border-cyan-500/10 pt-6">
-              <div className="flex items-center space-x-6">
-                {socialLinks.map((link, index) => {
-                  const Icon = link.icon;
-                  return (
-                    <a
-                      key={index}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-slate-400 hover:text-[#ff2b6a] transition-colors"
-                    >
-                      <Icon className="h-6 w-6" />
-                    </a>
-                  );
-                })}
-              </div>
-              <div className="text-xs font-mono text-slate-400">
-                {locationText}
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };

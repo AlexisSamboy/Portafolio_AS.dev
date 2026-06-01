@@ -4,13 +4,6 @@ import { Github, Linkedin, Instagram } from '@/components/ui/brand-icons';
 import { MinimalistHero } from '@/components/ui/minimalist-hero';
 
 const MinimalistHeroDemo = () => {
-  const navLinks = [
-    { label: 'SOBRE MÍ', href: '#about' },
-    { label: 'TRAYECTORIA', href: '#experience' },
-    { label: 'PROYECTOS', href: '#projects' },
-    { label: 'CERTIFICACIONES', href: '#certs' },
-  ];
-
   const socialLinks = [
     { icon: Github, href: 'https://github.com/AlexisSamboy' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/alexis-samboy-herrera/' },
@@ -20,11 +13,7 @@ const MinimalistHeroDemo = () => {
 
   return (
     <MinimalistHero
-      logoText="ALEXIS S."
-      logoImgSrc="img/logo-as-dev.png"
-      navLinks={navLinks}
       mainText="Especialista en Business Intelligence & Estrategia Digital. Diseño modelos de datos, automatizo ETLs y construyo cuadros de mando interactivos para facilitar decisiones de negocio estratégicas."
-      readMoreLink="#about"
       imageSrc="img/alexis-sin-fondo.png"
       imageAlt="Alexis Samboy Herrera - Business Intelligence Specialist"
       overlayText={{
