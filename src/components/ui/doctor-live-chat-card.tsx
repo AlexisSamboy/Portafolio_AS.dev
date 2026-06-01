@@ -16,10 +16,12 @@ export default function RuixenCard4() {
   ]);
   const [inputText, setInputText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
   }, [messages]);
 
   const suggestedQuestions = [
@@ -116,7 +118,7 @@ export default function RuixenCard4() {
       </div>
 
       {/* Chat Messages Logs */}
-      <div className="flex-grow p-4 overflow-y-auto space-y-3 max-h-[220px] scrollbar-thin bg-black/30">
+      <div ref={chatContainerRef} className="flex-grow p-4 overflow-y-auto space-y-3 max-h-[220px] scrollbar-thin bg-black/30">
         {messages.map((msg, index) => (
           <div
             key={index}
@@ -138,7 +140,6 @@ export default function RuixenCard4() {
             ARIA_SYS typing...
           </div>
         )}
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Suggested Questions Grid */}
