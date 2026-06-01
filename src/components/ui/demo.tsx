@@ -28,3 +28,11 @@ const MinimalistHeroDemo = () => {
 };
 
 export default MinimalistHeroDemo;
+
+import RuixenCard4 from "@/components/ui/doctor-live-chat-card";
+
+const DemoOne = () => {
+  return <RuixenCard4 />;
+};
+
+export { DemoOne };

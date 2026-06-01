@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal as TerminalIcon, Send, RefreshCw, Mail, MapPin, CheckCircle, ChevronRight } from 'lucide-react';
-import { Linkedin, Instagram } from '@/components/ui/brand-icons';
+import { Terminal as TerminalIcon, Send, RefreshCw } from 'lucide-react';
+import { Linkedin } from '@/components/ui/brand-icons';
 import { cn } from '@/lib/utils';
-import { CyberCard } from '@/components/ui/cyber-card';
+import RuixenCard4 from '@/components/ui/doctor-live-chat-card';
 
 // Terminal line interface
 interface TerminalLine {
@@ -35,8 +35,16 @@ export default function ContactoPage() {
   }, [terminalHistory]);
 
   // Focus terminal input when clicking the terminal container
-  const focusInput = () => {
-    if (formStep < 4) {
+  const focusInput = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (
+      target.tagName !== 'BUTTON' && 
+      target.tagName !== 'INPUT' && 
+      target.tagName !== 'A' && 
+      !target.closest('button') && 
+      !target.closest('a') && 
+      formStep < 4
+    ) {
       inputRef.current?.focus();
     }
   };
@@ -314,96 +322,9 @@ export default function ContactoPage() {
           </div>
         </div>
 
-        {/* Right Column: Direct Contact Info (lg:col-span-4) */}
-        <div className="lg:col-span-4 flex flex-col gap-6">
-          
-          {/* Card 1: Direct Contact Info */}
-          <CyberCard borderColor="cyan" className="bg-slate-950/70 border-cyan-500/20 flex-grow flex flex-col justify-between">
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
-                  <TerminalIcon className="w-4 h-4 text-cyan-400" />
-                  Núcleo de Contacto
-                </h3>
-                <p className="text-[10px] text-slate-500 font-mono mt-1">// CANALES_OFICIALES_SYS</p>
-              </div>
-
-              <div className="space-y-4 font-sans text-sm">
-                
-                {/* Email Direct */}
-                <a 
-                  href="mailto:alexissamboy1998@gmail.com" 
-                  className="flex items-center gap-3 p-3 rounded-xl border border-slate-900 hover:border-[#00f0ff]/20 bg-slate-950/40 hover:bg-[#00f0ff]/5 transition-all group"
-                >
-                  <div className="p-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 group-hover:text-glow-cyan">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-mono text-slate-500 block">EMAIL DIRECTO</span>
-                    <span className="text-slate-300 group-hover:text-slate-100 font-medium break-all">
-                      alexissamboy1998@gmail.com
-                    </span>
-                  </div>
-                </a>
-
-                {/* Location */}
-                <div 
-                  className="flex items-center gap-3 p-3 rounded-xl border border-slate-900 bg-slate-950/40"
-                >
-                  <div className="p-2 bg-slate-900 border border-slate-800 rounded-lg text-slate-400">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-mono text-slate-500 block">UBICACIÓN</span>
-                    <span className="text-slate-300 font-medium">
-                      Santo Domingo, Rep. Dom.
-                    </span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-slate-900 mt-6 space-y-2 font-mono text-[10px] text-slate-500">
-              <div>// DISPONIBILIDAD HORARIA:</div>
-              <div className="text-slate-400">Lunes - Viernes: 09:00 - 18:00 (GMT-4)</div>
-            </div>
-          </CyberCard>
-
-          {/* Card 2: Social Media Connect */}
-          <CyberCard borderColor="magenta" className="bg-slate-950/70 border-fuchsia-500/20">
-            <h3 className="text-base font-bold text-slate-100 flex items-center gap-2 mb-4">
-              <CheckCircle className="w-4 h-4 text-fuchsia-500" />
-              Sincronización Digital
-            </h3>
-
-            <div className="grid grid-cols-2 gap-3 font-sans">
-              
-              {/* LinkedIn */}
-              <a
-                href="https://www.linkedin.com/in/alexis-samboy-herrera/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center gap-2 p-3 rounded-xl border border-slate-900 hover:border-fuchsia-500/20 bg-slate-950/40 hover:bg-fuchsia-950/5 transition-all text-center group"
-              >
-                <Linkedin className="w-5 h-5 text-slate-400 group-hover:text-glow-magenta" />
-                <span className="text-[10px] font-mono text-slate-500 uppercase">LinkedIn</span>
-              </a>
-
-              {/* Instagram */}
-              <a
-                href="https://www.instagram.com/alexis_samboy/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex flex-col items-center gap-2 p-3 rounded-xl border border-slate-900 hover:border-fuchsia-500/20 bg-slate-950/40 hover:bg-fuchsia-950/5 transition-all text-center group"
-              >
-                <Instagram className="w-5 h-5 text-slate-400 group-hover:text-glow-magenta" />
-                <span className="text-[10px] font-mono text-slate-500 uppercase">Instagram</span>
-              </a>
-
-            </div>
-          </CyberCard>
-
+        {/* Right Column: AI Secretary Personal Assistant (lg:col-span-4) */}
+        <div className="lg:col-span-4 flex flex-col justify-center">
+          <RuixenCard4 />
         </div>
 
       </div>
