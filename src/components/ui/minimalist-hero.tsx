@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { LucideIcon } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { LucideIcon, X } from 'lucide-react';
 import { cn, getAssetPath } from '@/lib/utils';
 
 import { HologramLoop } from './hologram-loop';
@@ -64,6 +64,8 @@ export const MinimalistHero = ({
   locationText,
   className,
 }: MinimalistHeroProps) => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div
       className={cn(
@@ -96,7 +98,8 @@ export const MinimalistHero = ({
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col space-y-1.5 md:hidden"
+          className="flex flex-col space-y-1.5 md:hidden z-40 p-2 cursor-pointer hover:opacity-80 transition-opacity"
+          onClick={() => setIsMobileMenuOpen(true)}
           aria-label="Open menu"
         >
           <span className="block h-0.5 w-6 bg-foreground"></span>
@@ -197,6 +200,77 @@ export const MinimalistHero = ({
           {locationText}
         </motion.div>
       </footer>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: "-100%" }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: "-100%" }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            className="fixed inset-0 z-50 flex flex-col justify-between bg-[#05060a]/98 backdrop-blur-2xl p-8 md:hidden border-b border-[#00f0ff]/20"
+          >
+            {/* Header inside Mobile Menu */}
+            <div className="flex w-full items-center justify-between">
+              <div className="text-xl font-bold tracking-wider text-glow-cyan text-[#00f0ff] flex items-center">
+                {logoImgSrc ? (
+                  <img src={getAssetPath(logoImgSrc)} alt="AS.DEV Logo" className="h-6 w-auto object-contain" />
+                ) : (
+                  logoText
+                )}
+              </div>
+              <button
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="p-2 text-slate-300 hover:text-[#ff2b6a] hover:scale-110 transition-all cursor-pointer"
+                aria-label="Close menu"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Links Content */}
+            <div className="flex flex-col items-center justify-center space-y-8 my-auto">
+              {navLinks.map((link, index) => (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-2xl font-semibold tracking-widest text-[#00f0ff]/80 hover:text-[#00f0ff] text-glow-cyan transition-colors"
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+            </div>
+
+            {/* Mobile Menu Footer */}
+            <div className="flex flex-col items-center space-y-4 border-t border-cyan-500/10 pt-6">
+              <div className="flex items-center space-x-6">
+                {socialLinks.map((link, index) => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={index}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-slate-400 hover:text-[#ff2b6a] transition-colors"
+                    >
+                      <Icon className="h-6 w-6" />
+                    </a>
+                  );
+                })}
+              </div>
+              <div className="text-xs font-mono text-slate-400">
+                {locationText}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
