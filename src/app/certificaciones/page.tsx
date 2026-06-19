@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Award, Calendar, ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut, Maximize2, ShieldCheck, Database, Cpu, Code, LayoutGrid, Terminal } from 'lucide-react';
 import { getAssetPath, cn } from '@/lib/utils';
+import { CinematicFooter } from '@/components/ui/motion-footer';
 
 interface Credential {
   id: string;
@@ -286,6 +287,7 @@ export default function CertificacionesPage() {
   const currentCert = selectedCertIndex !== null ? filteredCerts[selectedCertIndex] : null;
 
   return (
+    <>
     <main className="relative min-h-screen bg-[#05060a] pt-28 pb-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
       
       {/* Background neon elements */}
@@ -546,5 +548,7 @@ export default function CertificacionesPage() {
       </AnimatePresence>
 
     </main>
+    <CinematicFooter />
+    </>
   );
 }

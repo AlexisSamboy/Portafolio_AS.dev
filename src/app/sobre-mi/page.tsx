@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { User, Briefcase, Code, Terminal, Database, Shield } from 'lucide-react';
 import { CyberCard } from '@/components/ui/cyber-card';
 import { getAssetPath, cn } from '@/lib/utils';
+import { CinematicFooter } from '@/components/ui/motion-footer';
 
 const techStack = [
   { name: 'Python', category: 'Backend & Data Science', level: 'Avanzado', glow: 'hover:shadow-[0_0_15px_#3776ab] hover:border-[#3776ab]/60', textColor: 'text-[#3776ab]', icon: 'Py' },
@@ -40,6 +41,7 @@ export default function SobreMiPage() {
   } as const;
 
   return (
+    <>
     <main className="relative min-h-screen bg-[#05060a] pt-28 pb-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
       
       {/* Background cyber glowing elements */}
@@ -222,5 +224,7 @@ export default function SobreMiPage() {
         </div>
       </motion.div>
     </main>
+    <CinematicFooter />
+    </>
   );
 }

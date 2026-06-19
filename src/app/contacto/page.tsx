@@ -3,9 +3,11 @@
 import React from 'react';
 import SphereHero from '@/components/ui/geometric-sphere';
 import RuixenCard4 from '@/components/ui/doctor-live-chat-card';
+import { CinematicFooter } from '@/components/ui/motion-footer';
 
 export default function ContactoPage() {
   return (
+    <>
     <main className="relative min-h-screen bg-[#05060a] pt-28 pb-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
       
       {/* Background cyber glowing elements */}
@@ -36,5 +38,7 @@ export default function ContactoPage() {
       </div>
 
     </main>
+    <CinematicFooter />
+    </>
   );
 }

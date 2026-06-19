@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal, Database, Code, Cpu, ExternalLink, Globe, LayoutGrid, X } from 'lucide-react';
 import { getAssetPath, cn } from '@/lib/utils';
+import { CinematicFooter } from '@/components/ui/motion-footer';
 
 interface Project {
   id: string;
@@ -140,6 +141,7 @@ export default function ProyectosPage() {
     : projectsData.filter(p => p.category === activeCategory);
 
   return (
+    <>
     <main className="relative min-h-screen bg-[#05060a] pt-28 pb-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
       
       {/* Background ambient light */}
@@ -375,5 +377,7 @@ export default function ProyectosPage() {
       </AnimatePresence>
 
     </main>
+    <CinematicFooter />
+    </>
   );
 }

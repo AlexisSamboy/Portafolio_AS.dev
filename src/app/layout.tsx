@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/ui/navbar";
-import { CinematicFooter } from "@/components/ui/motion-footer";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-sans",
@@ -17,12 +16,35 @@ const geistMono = Geist_Mono({
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://portafolio-alexis.vercel.app'),
   title: "Alexis Samboy | Data Analyst & Estratega Digital",
   description: "Portafolio profesional de Alexis Samboy. Especializado en transformar datos complejos en soluciones de negocio claras con Power BI, Python, SQL y Excel.",
   keywords: ["Data Analyst", "Analista de Datos", "Alexis Samboy", "Power BI", "SQL", "Python", "Dashboard", "Dominican Republic"],
   authors: [{ name: "Alexis Samboy" }],
   icons: {
     icon: basePath ? `${basePath}/img/logo-nav.png` : "img/logo-nav.png",
+  },
+  openGraph: {
+    title: "Alexis Samboy | Data Analyst & Estratega Digital",
+    description: "Portafolio profesional de Alexis Samboy. Especializado en transformar datos complejos en soluciones de negocio claras con Power BI, Python, SQL y Excel.",
+    url: "https://portafolio-alexis.vercel.app",
+    siteName: "Alexis Samboy Portfolio",
+    images: [
+      {
+        url: basePath ? `${basePath}/img/og-preview.png` : "/img/og-preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Alexis Samboy Portfolio Preview",
+      },
+    ],
+    locale: "es_RD",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Alexis Samboy | Data Analyst & Estratega Digital",
+    description: "Portafolio profesional de Alexis Samboy. Especializado en transformar datos complejos en soluciones de negocio claras con Power BI, Python, SQL y Excel.",
+    images: [basePath ? `${basePath}/img/og-preview.png` : "/img/og-preview.png"],
   },
 };
 
@@ -39,9 +61,6 @@ export default function RootLayout({
         
         {/* Page Content */}
         {children}
-
-        {/* Global Cinematic Footer */}
-        <CinematicFooter />
       </body>
     </html>
   );

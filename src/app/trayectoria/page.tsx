@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal, Database, Cpu, ChevronDown, Award, Briefcase, Code } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { CinematicFooter } from '@/components/ui/motion-footer';
 
 interface Experience {
   id: string;
@@ -103,25 +104,24 @@ export default function TrayectoriaPage() {
   };
 
   return (
-    <main className="relative min-h-screen bg-[#05060a] pt-24 pb-20 px-6 md:px-12 max-w-6xl mx-auto overflow-hidden">
+    <>
+    <main className="relative min-h-screen bg-[#05060a] pt-28 pb-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
       
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 right-0 h-[250px] w-[250px] rounded-full bg-[#00f0ff]/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 h-[250px] w-[250px] rounded-full bg-[#ff2b6a]/5 blur-3xl pointer-events-none" />
+      {/* Background cyber glowing elements */}
+      <div className="absolute top-1/4 left-1/3 h-[300px] w-[300px] rounded-full bg-[#00f0ff]/5 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/3 h-[300px] w-[300px] rounded-full bg-[#ff2b6a]/5 blur-3xl pointer-events-none" />
 
-      {/* Main HUD Title - Compact to ensure timeline fits immediately in viewport */}
-      <div className="flex items-center gap-3 mb-8">
-        <span className="font-mono text-[#ff2b6a] text-xs tracking-widest">[02 // EXP_TIMELINE_SYS]</span>
+      {/* Page Title HUD */}
+      <div className="flex items-center gap-3 mb-10">
+        <span className="font-mono text-[#ff2b6a] text-xs tracking-widest">[02 // SYS_PATH]</span>
         <h1 className="text-2xl md:text-3xl font-black text-glow-cyan text-slate-100 uppercase">
           Trayectoria
         </h1>
         <div className="h-[1px] flex-grow bg-cyan-500/20" />
       </div>
 
-      {/* Timeline Section */}
-      <div className="relative pl-4 md:pl-0 space-y-8">
-        
-        {/* Central Vertical Connector Line (Responsive) */}
+      <div className="relative space-y-12 pl-4 md:pl-0">
+        {/* High-tech vertical neon laser line connector */}
         <div className="absolute left-6 md:left-[196px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-[#ff2b6a] via-[#9d4edd] to-[#00f0ff] opacity-30 rounded-full" />
 
         {experiencesData.map((exp, idx) => {
@@ -133,9 +133,10 @@ export default function TrayectoriaPage() {
               layout
               key={exp.id}
               className="relative grid grid-cols-1 md:grid-cols-[180px_1fr] gap-6 items-start group"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.15, type: "spring", stiffness: 100, damping: 15 }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               
               {/* Timeline Glowing Node - Centered on desktop */}
@@ -280,5 +281,7 @@ export default function TrayectoriaPage() {
 
       </div>
     </main>
+    <CinematicFooter />
+    </>
   );
 }

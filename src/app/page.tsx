@@ -350,7 +350,14 @@ ORDER BY v.total_monto DESC;`;
             {experiences.map((exp, i) => {
               const JobIcon = exp.icon;
               return (
-                <div key={i} className="relative grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 group items-start">
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="relative grid grid-cols-1 md:grid-cols-[180px_1fr] gap-8 group items-start"
+                >
                   {/* Glowing 3D node indicator on vertical line - Centered at 196px (196 - 10 = 186px) */}
                   <div className="absolute left-[186px] top-6 h-5 w-5 rounded-full bg-slate-950 border-2 border-cyan-500/60 hidden md:flex items-center justify-center group-hover:border-[#ff2b6a] group-hover:shadow-[0_0_15px_#ff2b6a] transition-all duration-300 z-10">
                     <div className="h-1.5 w-1.5 rounded-full bg-cyan-400 group-hover:bg-[#ff2b6a] transition-colors" />
@@ -398,7 +405,7 @@ ORDER BY v.total_monto DESC;`;
                       </div>
                     </CyberCard>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
